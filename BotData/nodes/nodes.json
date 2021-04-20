@@ -1,0 +1,1495 @@
+{
+  "nodes": [
+    {
+      "type": "command",
+      "name": "help",
+      "guid": "7942fe4c-dffa-4146-8cab-d254b3d80d5d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "37eda463-a170-44f9-af54-61378ffc9294"
+          ]
+        }
+      ],
+      "x": 148,
+      "y": 188
+    },
+    {
+      "type": "response",
+      "name": "help menu",
+      "guid": "37eda463-a170-44f9-af54-61378ffc9294",
+      "reactionFields": [],
+      "embedfields": [
+        {
+          "name": "!help",
+          "value": "Shows this menu",
+          "inline": "true"
+        },
+        {
+          "name": "Prefix",
+          "value": "use ! to execute a command ",
+          "inline": "true"
+        },
+        {
+          "name": "!heart @user",
+          "value": "Give someone a :heart: by doing !heart @username ",
+          "inline": "true"
+        },
+        {
+          "name": "!bal @user",
+          "value": "Lists the current balance of hearts, guinea pigs etc of the user.",
+          "inline": "true"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7942fe4c-dffa-4146-8cab-d254b3d80d5d"
+        }
+      ],
+      "x": 345,
+      "y": 182,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF3408",
+        "Help Menu",
+        "",
+        "Hearty",
+        "",
+        "",
+        "Hello my name is Hearty! :heart:\nPlease choose one of the following commands listed below: ",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "heart",
+      "guid": "e2a9b131-f945-4bf0-abdd-da8e2959da10",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "dd2a58a2-c6d4-43a0-bdd5-ba300a72f1f9"
+          ]
+        }
+      ],
+      "x": 126,
+      "y": 352
+    },
+    {
+      "type": "response",
+      "name": "getreceiver",
+      "guid": "dd2a58a2-c6d4-43a0-bdd5-ba300a72f1f9",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "e447570f-22b5-4e4c-9c3d-5aa0d939458c"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e2a9b131-f945-4bf0-abdd-da8e2959da10"
+        }
+      ],
+      "x": 298,
+      "y": 328,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "receiver",
+        "User",
+        "server"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addheart",
+      "guid": "e447570f-22b5-4e4c-9c3d-5aa0d939458c",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "698cb4d0-ccfb-4737-a3d9-6eba46b56803"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "dd2a58a2-c6d4-43a0-bdd5-ba300a72f1f9"
+        }
+      ],
+      "x": 490,
+      "y": 315,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${serverVars.receiver.id}",
+        "heartcount",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "heart success",
+      "guid": "076c0452-8060-490b-9cb0-fafafea75b4d",
+      "reactionFields": [],
+      "embedfields": [
+        {
+          "name": "",
+          "value": "**[entry type]**: heart transmission  :heart: - [entry number]: ${globalVars.heartentrycount} - [total entries submitted]:  ${globalVars.totaluserentry}",
+          "inline": "true"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c3d9eb4b-76d8-42c1-88dc-ea7d961098f2"
+        }
+      ],
+      "x": 1736,
+      "y": 282,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF3408",
+        "heart transmission was successfull! :green_heart:",
+        "",
+        "",
+        "",
+        "",
+        "<@${dbsVars.CommandAuthor.id}> your submission was successful!\nA heart was successfully transmitted to **<@${serverVars.receiver.id}>**",
+        "",
+        "",
+        "",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "bal",
+      "guid": "7c8c2412-bbb5-4d50-b3de-19b78a65c2f6",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "ee67362a-187a-441a-a49e-8fb4e7edf2ae"
+          ]
+        }
+      ],
+      "x": 94,
+      "y": 484
+    },
+    {
+      "type": "response",
+      "name": "getreceiver_1",
+      "guid": "ee67362a-187a-441a-a49e-8fb4e7edf2ae",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "b850f99e-2b10-4fe5-a956-88df6f608b3f"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7c8c2412-bbb5-4d50-b3de-19b78a65c2f6"
+        }
+      ],
+      "x": 265,
+      "y": 467,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "receiver",
+        "User",
+        "server"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getheartcount",
+      "guid": "b850f99e-2b10-4fe5-a956-88df6f608b3f",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "balance",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "aef05a4c-28ee-4c71-b673-066f02d8ada5"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ee67362a-187a-441a-a49e-8fb4e7edf2ae"
+        }
+      ],
+      "x": 437,
+      "y": 471,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${serverVars.receiver.id}",
+        "heartcount",
+        "balance",
+        "global",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "bal success",
+      "guid": "783ce193-01d7-4ff6-9071-0ea319ebdcd8",
+      "reactionFields": [],
+      "embedfields": [
+        {
+          "name": "[ heart count :heart: ]",
+          "value": ":heart:    ${globalVars.balance}",
+          "inline": "true"
+        },
+        {
+          "name": "[total entries submitted]",
+          "value": "${globalVars.userentries}",
+          "inline": "true"
+        },
+        {
+          "name": "[guinea - pig count <:guinea:833963803234402304> ]",
+          "value": "<:guinea:833963803234402304> **${globalVars.guineapigs}**",
+          "inline": "true"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "40e60ca0-53f8-4b61-8bdc-726e9c795b45"
+        }
+      ],
+      "x": 1005,
+      "y": 485,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF3408",
+        "Balance of user:  [ **${serverVars.receiver.displayName}** ]",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "heartentry",
+      "guid": "698cb4d0-ccfb-4737-a3d9-6eba46b56803",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "da8b1f30-070b-41c8-a34d-55abaa1789c5"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e447570f-22b5-4e4c-9c3d-5aa0d939458c"
+        }
+      ],
+      "x": 669,
+      "y": 311,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "833983726639251456",
+        "heartentry",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getheartentry",
+      "guid": "da8b1f30-070b-41c8-a34d-55abaa1789c5",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "heartentrycount",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a9ebd7c8-896b-4026-a59c-5d79a18eb211"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "698cb4d0-ccfb-4737-a3d9-6eba46b56803"
+        }
+      ],
+      "x": 843,
+      "y": 312,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "833983726639251456",
+        "heartentry",
+        "heartentrycount",
+        "global",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "userid",
+      "guid": "bfd23ff8-3f79-4472-a6a4-8bb46fddb87c",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "283c493c-d0ac-4e9f-843c-fd2d62df8f22"
+          ]
+        }
+      ],
+      "x": 83,
+      "y": 652
+    },
+    {
+      "type": "response",
+      "name": "getreceiver_1_1",
+      "guid": "283c493c-d0ac-4e9f-843c-fd2d62df8f22",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a29f815c-0dec-4695-9bfa-6573772f6040"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "bfd23ff8-3f79-4472-a6a4-8bb46fddb87c"
+        }
+      ],
+      "x": 312,
+      "y": 627,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "receiver",
+        "User",
+        "server"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "useridsuccess",
+      "guid": "a29f815c-0dec-4695-9bfa-6573772f6040",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "283c493c-d0ac-4e9f-843c-fd2d62df8f22"
+        }
+      ],
+      "x": 524,
+      "y": 653,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFFFFF",
+        "User - ID of user [ ${serverVars.receiver.displayName} ]",
+        "",
+        "",
+        "",
+        "",
+        "**${serverVars.receiver.id}**",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "userentry",
+      "guid": "a9ebd7c8-896b-4026-a59c-5d79a18eb211",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "391c3361-44b2-4c03-9dce-2202be6fe7a4"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "da8b1f30-070b-41c8-a34d-55abaa1789c5"
+        }
+      ],
+      "x": 1031,
+      "y": 289,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        "userentries ",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getuserentries",
+      "guid": "40e60ca0-53f8-4b61-8bdc-726e9c795b45",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "userentries",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "783ce193-01d7-4ff6-9071-0ea319ebdcd8"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "aef05a4c-28ee-4c71-b673-066f02d8ada5"
+        }
+      ],
+      "x": 823,
+      "y": 473,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        "userentries ",
+        "userentries",
+        "global",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "totalentry",
+      "guid": "391c3361-44b2-4c03-9dce-2202be6fe7a4",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "c3d9eb4b-76d8-42c1-88dc-ea7d961098f2"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a9ebd7c8-896b-4026-a59c-5d79a18eb211"
+        }
+      ],
+      "x": 1285,
+      "y": 290,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "833983726639251456",
+        "totaluserentry",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "gettotaluserentry",
+      "guid": "c3d9eb4b-76d8-42c1-88dc-ea7d961098f2",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "totaluserentry",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "076c0452-8060-490b-9cb0-fafafea75b4d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "391c3361-44b2-4c03-9dce-2202be6fe7a4"
+        }
+      ],
+      "x": 1481,
+      "y": 260,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "833983726639251456",
+        "totaluserentry",
+        "totaluserentry",
+        "global",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "guineapig",
+      "guid": "bbc34631-3a2a-43f1-9070-0dfc7c524ada",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "0759e0ca-8b60-45f2-88de-dc05040f8e66"
+          ]
+        }
+      ],
+      "x": 67,
+      "y": 837
+    },
+    {
+      "type": "response",
+      "name": "getreceiver_2",
+      "guid": "0759e0ca-8b60-45f2-88de-dc05040f8e66",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "5d94cc3c-d966-4747-9d94-790c72693ac7"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "bbc34631-3a2a-43f1-9070-0dfc7c524ada"
+        }
+      ],
+      "x": 266,
+      "y": 814,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "receiver",
+        "User",
+        "server"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addguineapig",
+      "guid": "5d94cc3c-d966-4747-9d94-790c72693ac7",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "97e55b11-f81d-452d-b015-b289a0312079"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0759e0ca-8b60-45f2-88de-dc05040f8e66"
+        }
+      ],
+      "x": 439,
+      "y": 815,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${serverVars.receiver.id}",
+        "guineapigs",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "guineapigentry",
+      "guid": "97e55b11-f81d-452d-b015-b289a0312079",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "bf7d9be8-fc99-4670-978c-e062bb13d149"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5d94cc3c-d966-4747-9d94-790c72693ac7"
+        }
+      ],
+      "x": 616,
+      "y": 818,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "833983726639251456",
+        "guineapigentry",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getguineapigentries",
+      "guid": "bf7d9be8-fc99-4670-978c-e062bb13d149",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "guineapigentry",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "38a7a9e2-d8ca-42be-a8bc-b60d7aa6252c"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "97e55b11-f81d-452d-b015-b289a0312079"
+        }
+      ],
+      "x": 803,
+      "y": 810,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "833983726639251456",
+        "guineapigentry",
+        "guineapigentry",
+        "global",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "userentry_1",
+      "guid": "38a7a9e2-d8ca-42be-a8bc-b60d7aa6252c",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "bdcba7c0-f65a-448d-8306-a633ac3e6411"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "bf7d9be8-fc99-4670-978c-e062bb13d149"
+        }
+      ],
+      "x": 980,
+      "y": 824,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        "userentries ",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getuserentries_1",
+      "guid": "bdcba7c0-f65a-448d-8306-a633ac3e6411",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "userentries",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "30a86040-0fa4-46df-97d2-af06e33feedd"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "38a7a9e2-d8ca-42be-a8bc-b60d7aa6252c"
+        }
+      ],
+      "x": 1147,
+      "y": 819,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        "userentries ",
+        "userentries",
+        "global",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "gettotaluserentry_1",
+      "guid": "162ea249-6c18-4980-a287-98cd685b7e98",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "totaluserentry",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "f887931a-69d7-4bab-994a-c7a1fa57f0d5"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "30a86040-0fa4-46df-97d2-af06e33feedd"
+        }
+      ],
+      "x": 1506,
+      "y": 797,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "833983726639251456",
+        "totaluserentry",
+        "totaluserentry",
+        "global",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "totalentry_1",
+      "guid": "30a86040-0fa4-46df-97d2-af06e33feedd",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "162ea249-6c18-4980-a287-98cd685b7e98"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "bdcba7c0-f65a-448d-8306-a633ac3e6411"
+        }
+      ],
+      "x": 1340,
+      "y": 814,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "833983726639251456",
+        "totaluserentry",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "heart success_1",
+      "guid": "f887931a-69d7-4bab-994a-c7a1fa57f0d5",
+      "reactionFields": [],
+      "embedfields": [
+        {
+          "name": "",
+          "value": "[entry type]: <:guinea:833963803234402304> - [entry number]:${globalVars.guineapigentry} - [total entries submitted]: ${globalVars.totaluserentry}",
+          "inline": "true"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "162ea249-6c18-4980-a287-98cd685b7e98"
+        }
+      ],
+      "x": 1669,
+      "y": 802,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFB317",
+        "guinea - pig  transmission successfull! <:guinea:833963803234402304>",
+        "",
+        "",
+        "",
+        "",
+        "<@${dbsVars.CommandAuthor.id}> your submission was successful!\nA guinea  - pig <:guinea:833963803234402304> was successfully transmitted to **<@${serverVars.receiver.id}>**",
+        "",
+        "",
+        "",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getguineapigcount",
+      "guid": "aef05a4c-28ee-4c71-b673-066f02d8ada5",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "guineapigs",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "40e60ca0-53f8-4b61-8bdc-726e9c795b45"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b850f99e-2b10-4fe5-a956-88df6f608b3f"
+        }
+      ],
+      "x": 638,
+      "y": 462,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${serverVars.receiver.id}",
+        "guineapigs",
+        "guineapigs",
+        "global",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "guineaemoji",
+      "guid": "5db92818-c8c7-43c3-a2b5-79c4c1b7ed1d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "556d4e67-09b1-41b4-b444-68f2f16e5ba0"
+          ]
+        }
+      ],
+      "x": 51,
+      "y": 982
+    },
+    {
+      "type": "response",
+      "name": "guineaemojisuccess",
+      "guid": "556d4e67-09b1-41b4-b444-68f2f16e5ba0",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5db92818-c8c7-43c3-a2b5-79c4c1b7ed1d"
+        }
+      ],
+      "x": 220,
+      "y": 949,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "<:guinea:833963803234402304>",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "clearall",
+      "guid": "aaa39d8e-d034-4b26-a9e0-540566ba7805",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "bdb63dae-7296-46ac-98e8-0f02a3617197"
+          ]
+        }
+      ],
+      "x": 43,
+      "y": 1178
+    },
+    {
+      "type": "response",
+      "name": "getreceiver_2_1",
+      "guid": "bdb63dae-7296-46ac-98e8-0f02a3617197",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "8a465399-6fef-422c-b32c-1b58d4a56a6e"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "aaa39d8e-d034-4b26-a9e0-540566ba7805"
+        }
+      ],
+      "x": 222,
+      "y": 1160,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "receiver",
+        "User",
+        "server"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "reset",
+      "guid": "8a465399-6fef-422c-b32c-1b58d4a56a6e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "f69740ee-791b-413f-ad54-b1ca5a7440e8"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "bdb63dae-7296-46ac-98e8-0f02a3617197"
+        }
+      ],
+      "x": 415,
+      "y": 1179,
+      "rtype": "User Data",
+      "rsubtype": "Set User Data",
+      "formdata": [
+        "${serverVars.receiver.id}",
+        "heartcount",
+        "0"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "fieldvalue"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "reset_1",
+      "guid": "f69740ee-791b-413f-ad54-b1ca5a7440e8",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "c0d99dbf-fc35-4f26-b1dc-38ae73aeb012"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "8a465399-6fef-422c-b32c-1b58d4a56a6e"
+        }
+      ],
+      "x": 597,
+      "y": 1179,
+      "rtype": "User Data",
+      "rsubtype": "Set User Data",
+      "formdata": [
+        "833983726639251456",
+        "totaluserentry",
+        "0"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "fieldvalue"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "reset_1_1",
+      "guid": "c0d99dbf-fc35-4f26-b1dc-38ae73aeb012",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "569b877f-5100-4e42-ab6a-c1666ccdfe86"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "f69740ee-791b-413f-ad54-b1ca5a7440e8"
+        }
+      ],
+      "x": 780,
+      "y": 1191,
+      "rtype": "User Data",
+      "rsubtype": "Set User Data",
+      "formdata": [
+        "${serverVars.receiver.id}",
+        "userentries ",
+        "0"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "fieldvalue"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "reset_1_1_1",
+      "guid": "569b877f-5100-4e42-ab6a-c1666ccdfe86",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "1f3bea4e-dcf6-46c5-b7c8-aab71fb5dc30"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c0d99dbf-fc35-4f26-b1dc-38ae73aeb012"
+        }
+      ],
+      "x": 965,
+      "y": 1187,
+      "rtype": "User Data",
+      "rsubtype": "Set User Data",
+      "formdata": [
+        "833983726639251456",
+        "guineapigentry",
+        "0"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "fieldvalue"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "reset_1_1_1_1",
+      "guid": "1f3bea4e-dcf6-46c5-b7c8-aab71fb5dc30",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "343a980d-839b-4f0f-ae46-f72586b48573"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "569b877f-5100-4e42-ab6a-c1666ccdfe86"
+        }
+      ],
+      "x": 1140,
+      "y": 1196,
+      "rtype": "User Data",
+      "rsubtype": "Set User Data",
+      "formdata": [
+        "${serverVars.receiver.id}",
+        "guineapigs",
+        "0"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "fieldvalue"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "resetsuccess",
+      "guid": "343a980d-839b-4f0f-ae46-f72586b48573",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "1f3bea4e-dcf6-46c5-b7c8-aab71fb5dc30"
+        }
+      ],
+      "x": 1343,
+      "y": 1192,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFFFFF",
+        "Reset was successful!",
+        "",
+        "",
+        "",
+        "",
+        "All user data was removed. ",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    }
+  ]
+}

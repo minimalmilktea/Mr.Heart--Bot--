@@ -1,0 +1,447 @@
+{
+  "command": [
+    {
+      "name": "help",
+      "actions": [
+        {
+          "name": "help menu",
+          "category": "Message",
+          "type": "Send Embed",
+          "fields": [
+            {
+              "name": "!help",
+              "value": "Shows this menu",
+              "inline": "true"
+            },
+            {
+              "name": "Prefix",
+              "value": "use ! to execute a command ",
+              "inline": "true"
+            },
+            {
+              "name": "!heart @user",
+              "value": "Give someone a :heart: by doing !heart @username ",
+              "inline": "true"
+            },
+            {
+              "name": "!bal @user",
+              "value": "Lists the current balance of hearts, guinea pigs etc of the user.",
+              "inline": "true"
+            }
+          ],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FF3408",
+          "title": "Help Menu",
+          "url": "",
+          "authorname": "Hearty",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Hello my name is Hearty! :heart:\nPlease choose one of the following commands listed below: ",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "heart",
+      "actions": [
+        {
+          "name": "getreceiver",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "receiver",
+          "vartype": "User",
+          "savevartype": "server"
+        },
+        {
+          "name": "addheart",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "${serverVars.receiver.id}",
+          "field": "heartcount",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "heartentry",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "833983726639251456",
+          "field": "heartentry",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "getheartentry",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "833983726639251456",
+          "field": "heartentry",
+          "varname": "heartentrycount",
+          "savevartype": "global",
+          "vartype": "User"
+        },
+        {
+          "name": "userentry",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "${dbsVars.CommandAuthor.id}",
+          "field": "userentries ",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "totalentry",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "833983726639251456",
+          "field": "totaluserentry",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "gettotaluserentry",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "833983726639251456",
+          "field": "totaluserentry",
+          "varname": "totaluserentry",
+          "savevartype": "global",
+          "vartype": "User"
+        },
+        {
+          "name": "heart success",
+          "category": "Message",
+          "type": "Send Embed",
+          "fields": [
+            {
+              "name": "",
+              "value": "**[entry type]**: heart transmission  :heart: - [entry number]: ${globalVars.heartentrycount} - [total entries submitted]:  ${globalVars.totaluserentry}",
+              "inline": "true"
+            }
+          ],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FF3408",
+          "title": "heart transmission was successfull! :green_heart:",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "<@${dbsVars.CommandAuthor.id}> your submission was successful!\nA heart was successfully transmitted to **<@${serverVars.receiver.id}>**",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "bal",
+      "actions": [
+        {
+          "name": "getreceiver_1",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "receiver",
+          "vartype": "User",
+          "savevartype": "server"
+        },
+        {
+          "name": "getheartcount",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${serverVars.receiver.id}",
+          "field": "heartcount",
+          "varname": "balance",
+          "savevartype": "global",
+          "vartype": "User"
+        },
+        {
+          "name": "getguineapigcount",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${serverVars.receiver.id}",
+          "field": "guineapigs",
+          "varname": "guineapigs",
+          "savevartype": "global",
+          "vartype": "User"
+        },
+        {
+          "name": "getuserentries",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${dbsVars.CommandAuthor.id}",
+          "field": "userentries ",
+          "varname": "userentries",
+          "savevartype": "global",
+          "vartype": "User"
+        },
+        {
+          "name": "bal success",
+          "category": "Message",
+          "type": "Send Embed",
+          "fields": [
+            {
+              "name": "[ heart count :heart: ]",
+              "value": ":heart:    ${globalVars.balance}",
+              "inline": "true"
+            },
+            {
+              "name": "[total entries submitted]",
+              "value": "${globalVars.userentries}",
+              "inline": "true"
+            },
+            {
+              "name": "[guinea - pig count <:guinea:833963803234402304> ]",
+              "value": "<:guinea:833963803234402304> **${globalVars.guineapigs}**",
+              "inline": "true"
+            }
+          ],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FF3408",
+          "title": "Balance of user:  [ **${serverVars.receiver.displayName}** ]",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "userid",
+      "actions": [
+        {
+          "name": "getreceiver_1_1",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "receiver",
+          "vartype": "User",
+          "savevartype": "server"
+        },
+        {
+          "name": "useridsuccess",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FFFFFF",
+          "title": "User - ID of user [ ${serverVars.receiver.displayName} ]",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "**${serverVars.receiver.id}**",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "guineapig",
+      "actions": [
+        {
+          "name": "getreceiver_2",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "receiver",
+          "vartype": "User",
+          "savevartype": "server"
+        },
+        {
+          "name": "addguineapig",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "${serverVars.receiver.id}",
+          "field": "guineapigs",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "guineapigentry",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "833983726639251456",
+          "field": "guineapigentry",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "getguineapigentries",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "833983726639251456",
+          "field": "guineapigentry",
+          "varname": "guineapigentry",
+          "savevartype": "global",
+          "vartype": "User"
+        },
+        {
+          "name": "userentry_1",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "${dbsVars.CommandAuthor.id}",
+          "field": "userentries ",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "getuserentries_1",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${dbsVars.CommandAuthor.id}",
+          "field": "userentries ",
+          "varname": "userentries",
+          "savevartype": "global",
+          "vartype": "User"
+        },
+        {
+          "name": "totalentry_1",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "833983726639251456",
+          "field": "totaluserentry",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "gettotaluserentry_1",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "833983726639251456",
+          "field": "totaluserentry",
+          "varname": "totaluserentry",
+          "savevartype": "global",
+          "vartype": "User"
+        },
+        {
+          "name": "heart success_1",
+          "category": "Message",
+          "type": "Send Embed",
+          "fields": [
+            {
+              "name": "",
+              "value": "[entry type]: <:guinea:833963803234402304> - [entry number]:${globalVars.guineapigentry} - [total entries submitted]: ${globalVars.totaluserentry}",
+              "inline": "true"
+            }
+          ],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FFB317",
+          "title": "guinea - pig  transmission successfull! <:guinea:833963803234402304>",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "<@${dbsVars.CommandAuthor.id}> your submission was successful!\nA guinea  - pig <:guinea:833963803234402304> was successfully transmitted to **<@${serverVars.receiver.id}>**",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "guineaemoji",
+      "actions": [
+        {
+          "name": "guineaemojisuccess",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "<:guinea:833963803234402304>",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "clearall",
+      "actions": [
+        {
+          "name": "getreceiver_2_1",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "receiver",
+          "vartype": "User",
+          "savevartype": "server"
+        },
+        {
+          "name": "reset",
+          "category": "User Data",
+          "type": "Set User Data",
+          "user": "${serverVars.receiver.id}",
+          "field": "heartcount",
+          "fieldvalue": "0"
+        },
+        {
+          "name": "reset_1",
+          "category": "User Data",
+          "type": "Set User Data",
+          "user": "833983726639251456",
+          "field": "totaluserentry",
+          "fieldvalue": "0"
+        },
+        {
+          "name": "reset_1_1",
+          "category": "User Data",
+          "type": "Set User Data",
+          "user": "${serverVars.receiver.id}",
+          "field": "userentries ",
+          "fieldvalue": "0"
+        },
+        {
+          "name": "reset_1_1_1",
+          "category": "User Data",
+          "type": "Set User Data",
+          "user": "833983726639251456",
+          "field": "guineapigentry",
+          "fieldvalue": "0"
+        },
+        {
+          "name": "reset_1_1_1_1",
+          "category": "User Data",
+          "type": "Set User Data",
+          "user": "${serverVars.receiver.id}",
+          "field": "guineapigs",
+          "fieldvalue": "0"
+        },
+        {
+          "name": "resetsuccess",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FFFFFF",
+          "title": "Reset was successful!",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "All user data was removed. ",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    }
+  ]
+}

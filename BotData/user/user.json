@@ -1,0 +1,32 @@
+{
+  "users": {
+    "555947649899954187": {
+      "xp": 2,
+      "rank": "Regular"
+    },
+    "777301347540140082": {
+      "hearts ": 4,
+      "hearts": 6,
+      "heartcount": 3,
+      "userentries ": 3,
+      "guineapigs": 0,
+      "totaluserentry": 0,
+      "guineapigentry": 0
+    },
+    "833983726639251456": {
+      "hearts ": 1,
+      "hearts": 4,
+      "heartcount": 5,
+      "heartentry": 17,
+      "totaluserentry": 6,
+      "guineapigentry": 0
+    },
+    "459301172117766166": {
+      "heartcount": 3,
+      "guineapigs": 0,
+      "userentries ": 3,
+      "totaluserentry": 0,
+      "guineapigentry": 0
+    }
+  }
+}

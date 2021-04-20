@@ -1,0 +1,42 @@
+[{
+  "794958061487915018": "1",
+  "833963524711251969": "2"
+},{
+  "heartnumber": 3,
+  "number": 4,
+  "balance": 4,
+  "mentioneduser": "3",
+  "count": 5,
+  "receiver": "4",
+  "userentries": 3,
+  "heartentrycount": 6
+},{
+  "receiver": "5"
+},{
+  "guildID": "6",
+  "joinedTimestamp": 1609603171473,
+  "lastMessageChannelID": "7",
+  "premiumSinceTimestamp": null,
+  "deleted": false,
+  "nickname": null,
+  "userID": "8",
+  "displayName": "9"
+},{
+  "guildID": "6",
+  "joinedTimestamp": 1609603171473,
+  "lastMessageChannelID": "7",
+  "premiumSinceTimestamp": null,
+  "deleted": false,
+  "nickname": null,
+  "userID": "8",
+  "displayName": "9"
+},{
+  "guildID": "10",
+  "joinedTimestamp": 1618902798641,
+  "lastMessageChannelID": "11",
+  "premiumSinceTimestamp": null,
+  "deleted": false,
+  "nickname": null,
+  "userID": "8",
+  "displayName": "9"
+},"794958061487915018","794958061487915022","777301347540140082","milktea","833963524711251969","833963524711251972"]
